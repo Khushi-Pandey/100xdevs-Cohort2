@@ -24,7 +24,8 @@ function printStr(animal) {
 printStr(dog)     // won't give undefined because I'm not logging function instead just calling it
 printStr(cow)
 
-// class is a architectural blueprint for objects like delhi, mumbai, rajasthan. which can be used again for diff objects
+// class is a (blueprint) or architectural map of a building for objects like delhi, mumbai, rajasthan. which can be converted into real objects multiple times (used again for diff objects)
+// classes are good when u know that every animal will have for ex- speak a common function
 
 class Animal {
     constructor(name, legCount, speaks) {    // created function here named constructor
@@ -32,10 +33,15 @@ class Animal {
         this.legCount = legCount;
         this.speaks = speaks;
     }
+    static myType() {             // static func is associated with the class itself & not the object, static is used when we want to create function without the initiation of objects
+        console.log("Animal");
+    }
     speak() {
-        console.log(`${this.name} makes a noise.`);
+        console.log("hi there " + this.speaks);
     }
 }
+
+console.log(Animal.myType());
 
 // don't create an animal like this:
 let dog1 = {
@@ -45,5 +51,6 @@ let dog1 = {
 } 
 
 // do this:
-let dog = new Animal("dog", 4, "bhow bhow");
+let dog = new Animal("dog", 4, "bhow bhow");  // create object
 let cat = new Animal("dog", 4, "meow");
+cat.speak();  // call function on object
