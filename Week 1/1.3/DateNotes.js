@@ -23,4 +23,3 @@ const afterDate = new Date();
 const afterTimeInMs = afterDate.getTime();
 
 console.log(afterTimeInMs - beforeTimeInMs);
-//
