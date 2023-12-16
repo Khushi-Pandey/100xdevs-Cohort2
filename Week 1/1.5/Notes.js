@@ -47,7 +47,7 @@ fs.readFile("a.txt", "utf-8", function(err, data){
 
 console.log("hi there")
 
-/* javascript architecture:
+/* javascript browser architecture:
 1. call stack 
 2. web Apis(not a part of original js spec. and is handled by the browser) 
 3. callback queue 
