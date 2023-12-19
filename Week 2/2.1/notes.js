@@ -8,7 +8,6 @@ there are some tasks it needs to wait for -
 
 // web Apis: extra fns that browser(nodejs also does) provides(handled by c++ code mostly and in case of fs.readFile OS handles) that isn't a part of js spec.
 
-const { promises } = require("dns");
 const fs = require("fs"); // have to import fs library bcoz it's not a common usecase so it is good for it to be not present in the global scope which is available everywhere
 
 fs.readFile("a1.txt", "utf-8", function(err, data) {
