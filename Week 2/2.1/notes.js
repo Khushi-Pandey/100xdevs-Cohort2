@@ -8,6 +8,7 @@ there are some tasks it needs to wait for -
 
 // web Apis: extra fns that browser(nodejs also does) provides(handled by c++ code mostly and in case of fs.readFile OS handles) that isn't a part of js spec.
 
+const { promises } = require("dns");
 const fs = require("fs"); // have to import fs library bcoz it's not a common usecase so it is good for it to be not present in the global scope which is available everywhere
 
 fs.readFile("a1.txt", "utf-8", function(err, data) {
@@ -111,5 +112,67 @@ myOwnSetTimeout(function() {
 
 
 // what does resolve do actually?
-// The purpose of the resolve function is to fulfill the Promise with a resolved value, that value is passed to ans variable in case of await and ans aa arg in case of .then()
+// The purpose of the resolve function is to fulfill the Promise with a resolved value, that value is passed to ans variable in case of await and ans as arg in case of .then()
 //let ans = await fucn() or .then(func(ans))  here ans is the value that is received from resolve
+
+function sum(a, b) {
+    return new Promise(function(resolve) {
+        resolve(a + b);
+    })
+}
+
+sum().then(function sum(ans) {
+    console.log(ans);
+})
+
+
+// how resolve is similar to callback fn:
+function sumOfSquares(a, b, fn) {
+    let value1 = a * a;
+    let value2 = b * b;
+    fn(value1 + value2);  //same as calling resolve
+}
+
+// calling a non promisified fn
+sumOfSquares(1, 2, function(value) {
+    console.log(value);
+})
+
+// calling a promisified async fn
+sumOfSquares(1, 2).then(function(value) {
+    console.log(value);
+})
+
+// when passing a fn as arg don't use () because this means you're calling it which actually passes the value and not the function, ex:
+setTimeout(sum(1, 2), 1000); // here this actually means-
+setTimeout(3, 1000); // but we don't want to pass the value or give fn call but we want to simply pass in a fn
+setTimeout(function() {    // so what you can do is define a fn which calls sum(1, 2)
+    sum(1, 2)
+}, 1000);
+
+// let's dry run promise:
+console.log("at the top 1");
+function promisifiedTimeout() {     //defining
+    console.log("function called 3");
+    return new Promise(function(resolve) {
+        console.log("inside promise callback 4");
+        setTimeout(function() {
+            console.log("setTimeout called 5");
+            resolve("done baby! I am burnt out.");
+        }, 5000);
+    });
+}
+console.log("in the middle 2");     
+promisifiedTimeout().then(function(value) {        //calling
+    console.log("promisified then 6");
+    console.log(value);
+});
+
+// promise chaining:
+p().then(function() {
+    return newFunctionCall()
+}).then(function() {
+    return otherFn()
+}).then(function() {
+
+})
