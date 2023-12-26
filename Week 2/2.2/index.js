@@ -15,7 +15,7 @@ require('dotenv').config();
 // const http = require("http") // nodejs provides this module out of the box to create http server
 //Express is a higher-level framework built on top of the HTTP module
 const app = express()  // initialises an instance of express
-const port = process.env.PORT || 3000   //gives an env variable like we can define a port in terminal-> set PORT=3005 (in win)     export PORT=3005(in case of linux/mac)
+const port = process.env.PORT || 3000   //gives an env variable like we can define a port in terminal-> set PORT=3005 (in win)  ||  but in vs code powershell is used so-> $env:PORT=3006  ||  export PORT=3005(in case of linux/mac)
 //middlewares
 app.use(bodyParser.json({}));     //same as-> app.use(express.json());
 
