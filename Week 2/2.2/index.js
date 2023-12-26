@@ -11,11 +11,10 @@
 // express hello world program (copied from google):
 const express = require('express')
 const bodyParser = require("body-parser");
-require('dotenv').config();
 // const http = require("http") // nodejs provides this module out of the box to create http server
 //Express is a higher-level framework built on top of the HTTP module
 const app = express()  // initialises an instance of express
-const port = process.env.PORT || 3000   //gives an env variable like we can define a port in terminal-> set PORT=3005 (in win)  ||  but in vs code powershell is used so-> $env:PORT=3006  ||  export PORT=3005(in case of linux/mac)
+const port = process.env.PORT || 3000   //gives an env variable like we can define a port in terminal-> set PORT=3005 (in win) || but in vs code powershell is used so--> $env:PORT=3006  ||  export PORT=3005(in case of linux/mac)
 //middlewares
 app.use(bodyParser.json({}));     //same as-> app.use(express.json());
 
@@ -67,3 +66,22 @@ and not-> node index.js //again and again
 
 
 // create a todo app that lets users store todos on the server
+
+//npm vs npx
+// npm manage packages
+// npx -> when you want to use a package immediately and not install it
+
+// how does frontend know which prt to hit?
+/* <html>
+  <script>
+    const backendUrl = "http://localhost:3001"
+  </script>
+</html>  */
+
+// The body-parser module enables us to parse incoming req bodies in a middleware.
+// Express.js server needs to know what type of data you're sending over the network, so it knows how to parse it.
+
+// fs is a library that gives u high level constructs to do filesystem stuff (read from a file, write to a file...)
+
+// what is express?
+// express is a library that gives u high level constructs to create http servers
