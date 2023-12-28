@@ -4,7 +4,7 @@
 
 // to know which directory you're in-> pwd   //prints the working directory
 
-// to go two folders backs use-> cd ../..
+// to go two folders back use-> cd ../..
 
 // if folder name has space in between use quotes
 
