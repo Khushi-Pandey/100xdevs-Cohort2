@@ -18,3 +18,14 @@
 // ls ..  : suppose you're inside a subdir and want list files from parent dir
 
 // cd : Change Directory
+// cd ..   : to hop back one directory
+// cd ../..   : for multiple dir's
+
+// cat  : concatenate -> command to display the contents of a file
+// cat > newFile.txt    //adding text to a file
+   dfgdsfih
+   zjdbwih
+   xsdnw    //then press ctrl+D 
+// cat >> newFile.txt   //to append more data
+
+// touch  : create a New File 
