@@ -29,3 +29,20 @@
 // cat >> newFile.txt   //to append more data
 
 // touch  : create a New File 
+
+// mkdir  : Make Directory
+// mkdir test && cd test   :just using both commands together
+// mkdir -p frontend/scripts    :recursively creating dir's and what this does is if parent dir doesn't it creates it without giving any error unlike simple mkdir
+
+// mv script.js runtime_script.js     : to rename a file
+// mv style.css zk-dapp/frontend/css/zk.css    :renaming file while moving it to another location
+
+// cp : Copy files
+// cp -r  :to copy folders
+
+// rm : Delete files
+// rm -r  : delete folders
+
+// chmod : Change File Permissions -> Modify the read(r), write(w), and execute(x) permissions of a file
+// chmod ugo-rwx    //for files  // user(u),group(g),others(o), +/- whether we're adding or removing a permission
+// chmod -R ugo-rwx   //for folders
