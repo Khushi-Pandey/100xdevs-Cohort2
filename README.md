@@ -2,5 +2,5 @@
 
 - All about Code and notes from the class
 
-## assignment solutions:
+## Assignment solutions:
 https://github.com/Khushi-Pandey/assignments
