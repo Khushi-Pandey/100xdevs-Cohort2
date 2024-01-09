@@ -31,3 +31,14 @@ console.log(ans);
 
 // assignment: create a map function that takes 2 inputs- an array and a transformation callback/fn and transforms the array into a new one using the transformation fn
 // create a map fn that takes an array and a transform fn as input and returns the transformed array as output
+let arr = [1, 2, 3, 4, 5];
+
+const map = (arr, fn) => {
+    const transformedArr = [];
+    for(let i=0; i<arr.length; i++) {
+        transformedArr.push(fn(arr[i]));
+    }
+    return transformedArr;
+};
+
+console.log(map(arr, (x) => x * 2))
