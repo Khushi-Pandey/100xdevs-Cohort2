@@ -63,3 +63,59 @@ app.get("/health-checkup", userMiddleware, kidneyMiddleware, function(req, res, 
 }, function(req, res) {
   console.log('hi from req2');
 })
+
+// one another popular middleware is to calculate the number of requests
+let numberOfRequests = 0;
+function calculateRequests(req, res, next) {
+  numberOfRequests++;
+  console.log(numberOfRequests);
+  next();
+}
+
+app.get("/health-checkup", calculateRequests, function(req, res) {
+
+});
+
+app.get("/health-checkup2", calculateRequests, function(req, res) {
+
+});
+
+// app.use in middlewares->
+let numberOfRequest = 0;
+function calculateRequests(req, res, next) {
+  numberOfRequest++;
+  console.log(numberOfRequest);
+  next();
+}
+app.use(calculateRequests);  // purpose is that any other route coming after this will have this middleware added
+
+app.post("/health-checkup", function(req, res){
+
+})
+
+// Assignment-> find the average time your server is taking to handle requests
+
+
+// input validation
+app.use(express.json())
+
+app.post("/health-checkup", function(req, res) {
+  // kidneys = [1, 2] 
+  const kidneys = req.body.kidneys;
+  const kidneyLength = kidneys.length;
+  res.send("you have " + kidneyLength + " kidneys");
+});
+
+// global catches   ->    which is another middleware that takes 4 inputs & not 3, it's always at the end after all the routes and everything
+app.use(function(err, req, res, next) {
+  res.json({
+    msg: "Sorry something is up with our server"
+  })
+})
+
+
+/* post req on postman in body
+{
+  "kidneys": [1, 2]
+}
+*/
