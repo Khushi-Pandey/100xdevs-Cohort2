@@ -87,3 +87,15 @@ app.post('/login', function (req, res) {
     return;
   }
 })
+
+
+
+//
+function middleware() {
+  return function(req, res, next) {
+
+  }
+}
+
+app.use(middleware());
+app.use(express.json());
