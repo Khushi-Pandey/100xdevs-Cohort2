@@ -1,0 +1,1 @@
+// fetch basically represents how can you send http requests from real websites 
