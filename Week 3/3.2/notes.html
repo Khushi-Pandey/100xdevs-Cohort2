@@ -1,0 +1,36 @@
+// fetch basically represents how can you send http requests from real websites 
+
+// browsers expose a function called fetch which as the name suggests lets you fetch data from backend which by default sends a get request
+
+// until now we have sent requests in 2 ways- either using postman or using the browser url bar
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <script>
+    // function getAnimalData() {
+    //   const response = fetch("https://fakerapi.it/api/v1/persons").then(function(response){
+    //     response.json().then(function(finalData){
+    //       console.log(finalData);
+    //     })
+    //   });
+    // }
+
+    async function GetAnimalData() {
+      const response = await fetch("https://fakerapi.it/api/v1/persons");
+      const finalData = await response.json();
+      console.log(finalData);
+    }
+  </script>
+  <button onclick="getAnimalData()">Get animal data</button>
+</body>
+
+</html>
