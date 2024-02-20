@@ -20,3 +20,5 @@ const response = await fetch("https://fakerapi.it/api/v1/persons", {
         "Authorization": localStorage.read("token")
     }
 });
+
+// assignment:
