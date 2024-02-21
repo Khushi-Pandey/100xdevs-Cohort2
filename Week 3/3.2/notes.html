@@ -25,16 +25,20 @@
     // }
 
     async function getUserData() {
+      // axios library in a single call gives you back the json
+      // but the fetch api expects if you're expecting json data then call this function response.json and async function await on it, that's how you get the data
       const response = await fetch("https://fakerapi.it/api/v1/persons");
       const finalData = await response.json();
-      console.log(finalData);
+      // console.log(finalData);
+      document.getElementById("userData").innerHTML = JSON.stringify(finalData)
 
       // you don't have to have a call this function on a button click
       // anytime the page is loaded I'm just going to call the function
-      getUserData();
+      // getUserData();
     }
   </script>
-  <!-- <button onclick="getUserData()">Get user data</button> -->
+  <div id="userData"></div>
+  <button onclick="getUserData()">Get user data</button>
 </body>
 
 </html>
