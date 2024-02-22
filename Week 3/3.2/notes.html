@@ -26,6 +26,7 @@
 
     async function getUserData() {
       // axios library in a single call gives you back the json
+      const response = axios.get("https://fakerapi.it/api/v1/persons")
       // but the fetch api expects if you're expecting json data then call this function response.json and async function await on it, that's how you get the data
       const response = await fetch("https://fakerapi.it/api/v1/persons");
       const finalData = await response.json();
