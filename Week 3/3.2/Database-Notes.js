@@ -58,3 +58,17 @@ app.post('/signup', async function(req, res) {
 })
 
 app.listen(3000)
+
+
+// jwt recap
+const jwt = require("jsonwebtoken");
+
+const password = "123";
+
+const token = jwt.sign({
+  name: "harkirat"
+}, password);
+
+console.log(token);
+
+jwt.verify(token, password)
