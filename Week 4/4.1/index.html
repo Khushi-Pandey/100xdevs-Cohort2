@@ -1,21 +1,49 @@
 <html>
     <script>
-        function populateDiv() {
-            // hello world
-            // document: a global variable using which you can manipulate the DOM
-            const a = document.getElementById("firstNumber").value;
-            const b = document.getElementById("secondNumber").value;
-            const element = document.getElementById("finalSum")
-            element.innerHTML = parseInt(a) + parseInt(b);  // innerHTML is how you put a certain thing inside a div
-        } 
+        // function populateDiv() {
+        //     // hello world
+        //     // document: a global variable using which you can manipulate the DOM
+        //     const a = document.getElementById("firstNumber").value;
+        //     const b = document.getElementById("secondNumber").value;
+        //     const element = document.getElementById("finalSum")  // there's also=> document.getElementsByClassName("inputs")[0]
+        //     element.innerHTML = parseInt(a) + parseInt(b);  // innerHTML is how you put a certain thing inside a div
+        // } 
+            function getData() {
+                const a = document.getElementById("firstNumber").value;
+                const b = document.getElementById("secondNumber").value;
+                fetch("https://sum-server.100xdevs.com/sum?a=" + a + "&b=" + b)
+                    .then(function(response) {
+                        response.text()
+                            .then(function(ans) {
+                                document.getElementById("finalSum").innerHTML = ans;
+                            })
+                    })
+            }
+
+            async function getData2() {
+                const a = document.getElementById("firstNumber").value;
+                const b = document.getElementById("secondNumber").value;
+
+                const response = await fetch("https://sum-server.100xdevs.com/sum?a=" + a + "&b=" + b)
+                const ans = await response.text();
+                document.getElementById("finalSum").innerHTML = ans;
+            }
+
     </script>
     <body>
         <input id="firstNumber" type="text" placeholder="First number"></input> <br></br>
         <input id="secondNumber" type="text" placeholder="Second number"></input> <br></br>
-        <button onclick="populateDiv()">Calculate sum</button> <br></br>
+
+        <!-- <input class="inputs" onInput="populateDiv()" id="firstNumber" type="text" placeholder="First number"></input> <br></br>
+        <input class="inputs" onInput="populateDiv()" id="secondNumber" type="text" placeholder="Second number"></input> <br></br> -->
+        
+        <!-- <button onclick="populateDiv()">Calculate sum</button> <br></br> -->
+        <button onclick="getData()">Fetch Data</button> <br></br>
         <div id="finalSum"></div>
     </body>
 </html>
+
+<!--basically elements tab in the inspect is what's called DOM-->
 
 <!-- Dynamic :- Changing the elements on the website once the website is loaded
     Classes help with not repeating the code and are not unique. if we want the same styles on two diff elements we can have those elements with same class and just style it once (.)

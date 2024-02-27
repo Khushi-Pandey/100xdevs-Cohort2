@@ -1,0 +1,33 @@
+<html>
+    <script>
+        async function getData() {
+            const p = document.getElementById("principal").value;
+            const r = document.getElementById("rate").value;
+            const t = document.getElementById("time").value;
+
+            const response = await fetch("https://sum-server.100xdevs.com/interest?principal=" + p + "&rate=" + r + "&time=" + t)
+            const ans = await response.json();
+            document.getElementById("Interest").innerHTML = ans.interest;
+            document.getElementById("total").innerHTML = ans.total;
+
+            /* to print in {"total":110,"interest":10}  format */
+            // const formattedData = JSON.stringify({
+            //     total: ans.total,
+            //     interest: ans.interest
+            // });
+
+            // document.getElementById("Interest").innerHTML = formattedData;
+        }
+
+    </script>
+
+    <body>
+        <input id="principal" type="text" placeholder="principal"></input> <br></br>
+        <input id="rate" type="text" placeholder="rate"></input> <br></br>
+        <input id="time" type="text" placeholder="time"></input> <br></br>
+
+        <button onclick="getData()">Fetch Data</button> <br></br>
+        <div id="Interest"></div>
+        <div id="total"></div>
+    </body>
+</html>
