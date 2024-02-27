@@ -1,5 +1,14 @@
 <html>
     <script>
+        // DELAYED SENDING OF REQUESTS: Debouncing
+        let timeout;
+        function debounceGetdata2() {
+            clearTimeout(timeout);
+            timeout = setTimeout(function() {
+                getData2()
+            }, 1000);
+        }
+
         // function populateDiv() {
         //     // hello world
         //     // document: a global variable using which you can manipulate the DOM
@@ -31,14 +40,14 @@
 
     </script>
     <body>
-        <input id="firstNumber" type="text" placeholder="First number"></input> <br></br>
-        <input id="secondNumber" type="text" placeholder="Second number"></input> <br></br>
+        <!-- <input class="inputs" id="firstNumber" type="text" placeholder="First number"></input> <br></br>
+        <input class="inputs" id="secondNumber" type="text" placeholder="Second number"></input> <br></br> -->
 
-        <!-- <input class="inputs" onInput="populateDiv()" id="firstNumber" type="text" placeholder="First number"></input> <br></br>
-        <input class="inputs" onInput="populateDiv()" id="secondNumber" type="text" placeholder="Second number"></input> <br></br> -->
+        <input onInput="debounceGetdata2()" id="firstNumber" type="text" placeholder="First number"></input> <br></br>
+        <input onInput="debounceGetdata2()" id="secondNumber" type="text" placeholder="Second number"></input> <br></br>
         
         <!-- <button onclick="populateDiv()">Calculate sum</button> <br></br> -->
-        <button onclick="getData()">Fetch Data</button> <br></br>
+        <!-- <button onclick="getData()">Fetch Data</button> <br></br> -->
         <div id="finalSum"></div>
     </body>
 </html>
