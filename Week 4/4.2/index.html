@@ -1,0 +1,18 @@
+<html>
+    <script>
+        // start .        -> type this in vs code terminal, it opens the file directory
+        function addTodo() {
+            const title = document.getElementById("title").value;
+            const description = document.getElementById("description").value;
+            console.log(title);
+            console.log(description);
+        }
+    </script>
+    <div>
+        <input id="title" type="text" placeholder="title"> </input>
+        <br></br>
+        <input id="description" type="text" placeholder="description"> </input>
+        <br></br>
+        <button onclick="addTodo()">Add todo</button>
+    </div>
+</html>
