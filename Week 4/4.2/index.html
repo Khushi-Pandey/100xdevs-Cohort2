@@ -4,8 +4,19 @@
         function addTodo() {
             const title = document.getElementById("title").value;
             const description = document.getElementById("description").value;
-            console.log(title);
-            console.log(description);
+            // const originalHtml = document.getElementById("container").innerHTML;
+            // document.getElementById("container").innerHTML = originalHtml + `
+            // <div>
+            //     <div>${title}</div>
+            //     <div>${description}</div>
+            //     <button>Mark as done</button>
+            // </div>
+            // `
+
+            // document.createElement
+            const childDiv = document.createElement("div"); // <div></div> creates in memory but still not in the DOM
+            childDiv.innerHTML = title;
+            document.getElementById("container").appendChild(childDiv);
         }
     </script>
     <div>
@@ -14,5 +25,6 @@
         <input id="description" type="text" placeholder="description"> </input>
         <br></br>
         <button onclick="addTodo()">Add todo</button>
+        <div id="container"></div>
     </div>
 </html>
