@@ -1,15 +1,18 @@
+<!-- state -> 
+ 1. a variable which has how your application should look.
+ 2. a very long object that contains the structure of your application. -->
+
 <!DOCTYPE html>
 <html>
+<body>
+  <input type="text" id="title" placeholder="Todo title"></input> <br /><br />
+  <input type="text" id="description" placeholder="Todo description"></input> <br /><br />
 
-<head>
+  <div id="container">
+
+  </div>
+
   <script>
-    let globalId = 1;
-
-    function markAsDone(todoId) {
-      const parent = document.getElementById(todoId);
-      parent.children[2].innerHTML = "Done!"
-    }
-
     function createChild(title, description, id) {
       const child = document.createElement("div");
       const firstGrandChild = document.createElement("div");
@@ -25,24 +28,32 @@
       child.setAttribute("id", id);
       return child;
     }
-    function addTodo() {
-      const title = document.getElementById("title").value;
-      const description = document.getElementById("description").value;
-      const parent = document.getElementById("todos");
-
-      parent.appendChild(createChild(title, description, globalId++));
+    // State will always be an array
+    // Every element of state would have a title, description and id
+    //
+    function updateDomAccToState(state) {
+      const parent = document.getElementById("container");
+      parent.innerHTML = "";       // clearing the DOM
+      for(let i = 0; i<state.length; i++) {
+        const child = createChild(state[i].title, state[i].description, state[i].id);
+        parent.appendChild(child);
+      }
     }
+    window.setInterval(async function() {
+        const res = await fetch("https://sum-server.100xdevs.com/todos")
+        const json = await res.json();
+        updateDomAccToState(json.todos)
+    }, 5000)
+    // updateDomAccToState([{
+    //     title: "go to gym",
+    //     description: "go to gym from 5-7",
+    //     id: 1
+    // }, {
+    //     title: "go to gym 2",
+    //     description: "go to gym from 5-7",
+    //     id: 1
+    // }])
   </script>
-</head>
-
-<body>
-  <input type="text" id="title" placeholder="Todo title"></input> <br /><br />
-  <input type="text" id="description" placeholder="Todo description"></input> <br /><br />
-  <button onclick="addTodo()">Add todo</button>
-
-  <div id="todos">
-
-  </div>
 </body>
 
 </html>
