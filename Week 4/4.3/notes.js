@@ -8,3 +8,5 @@
 // In Mongoose first you have to define a schema
 
 // MongoDB(schema less) is in stark contrast with SQL databases(which are schema based, you have to upfront tell the structure of your data)
+
+// SQL databases like MySQL and postgres don't let you put transitive nested objects like mongodb allows complex objects like arrays
