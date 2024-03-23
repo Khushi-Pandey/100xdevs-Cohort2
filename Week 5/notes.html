@@ -1,0 +1,18 @@
+<!-- facebook was making a very big website and realized it was difficult to do it traditional way so they created React as a library and then open sourced  -->
+<!DOCTYPE html>
+<html>
+<script>
+  function onButtonPress() {
+    const currentValue = document.getElementById("btn").innerHTML;
+    console.log(currentValue.split(" "))
+    const currentCounter = currentValue.split(" ")[1];
+    const newCounter = parseInt(currentCounter) + 1;
+    document.getElementById("btn").innerHTML = "Counter " + newCounter;
+  }
+</script>
+
+<body>
+  <button onclick="onButtonPress()" id="btn">Counter 0</button>
+</body>
+
+</html>
